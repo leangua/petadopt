@@ -6,10 +6,9 @@ import models
 import sys
 sys.path.append("..")
 
-
 router = APIRouter(
     prefix="/tutor",
-    tags=["tutor"],
+    tags=["Tutores"],
     responses={404: {"Description": "Not Found"}}
 )
 
@@ -34,7 +33,7 @@ def retornar_tutores(db: Session = Depends(get_db)):
     return db.query(models.Tutor).all()
 
 
-@router.get("/tutores/{tutor_id}")
+@router.get("/{tutor_id}")
 def retornar_tutor(tutor_id: int,
                    db: Session = Depends(get_db)):
     return db.query(models.Tutor).filter(models.Tutor.id == tutor_id).first()
