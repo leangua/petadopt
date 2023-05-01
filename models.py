@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from database import Base
 
@@ -13,21 +13,22 @@ class Tutor(Base):
     sobre = Column(String)
 
 
-class Pet(Base):
+class Pets(Base):
     __tablename__ = "pets"
 
     id = Column(Integer, primary_key=True, index=True)
     nome = Column(String)
     idade = Column(Integer)
     temperamento = Column(String)
+    abrigo_id = Column(Integer, ForeignKey("abrigos.id"))
 
-    local = relationship("Abrigo", back_populates="pet")
+    abrigo = relationship("Abrigos", back_populates="pet")
 
 
-class Abrigo(Base):
+class Abrigos(Base):
     __tablename__ = "abrigos"
 
     id = Column(Integer, primary_key=True, index=True)
     localidade = Column(String)
 
-    pet = relationship("Pet", back_populates="local")
+    pet = relationship("Pets", back_populates="abrigo")
