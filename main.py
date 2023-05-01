@@ -21,7 +21,7 @@ class Tutor(BaseModel):
     nome: str = Field(min_length=1)
     telefone: str = Field(min_length=1)
     cidade: str = Field(min_length=1)
-    sobre: str = Field(min_length=1, None)
+    sobre: str = Field(min_length=1)
 
 
 @app.post("/tutor")
