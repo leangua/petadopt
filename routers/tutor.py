@@ -1,15 +1,16 @@
-import models
-from pydantic import BaseModel, Field
-from database import SessionLocal, Session
 from fastapi import APIRouter, Depends
+from database import SessionLocal
+from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
+import models
 import sys
 sys.path.append("..")
 
 
 router = APIRouter(
-    prefix="/tutores",
-    tags=["tutores"],
-    response={404: {"Description": "Not Found"}}
+    prefix="/tutor",
+    tags=["tutor"],
+    responses={404: {"Description": "Not Found"}}
 )
 
 
