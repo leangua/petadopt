@@ -38,9 +38,7 @@ def retornar_pet(pet_id: int,
     return db.query(models.Pet).filter(models.Pet.id == pet_id).first()
 
 
-router.post("/")
-
-
+@router.post("/")
 def criar_pet(pet: Pet,
               db: Session = Depends(get_db)):
     pet_model = models.Pet()
