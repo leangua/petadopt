@@ -13,7 +13,7 @@ class Tutor(Base):
     sobre = Column(String)
 
 
-class Pets(Base):
+class Pet(Base):
     __tablename__ = "pets"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -22,13 +22,13 @@ class Pets(Base):
     temperamento = Column(String)
     abrigo_id = Column(Integer, ForeignKey("abrigos.id"))
 
-    abrigo = relationship("Abrigos", back_populates="pet")
+    abrigo = relationship("Abrigo", back_populates="pet")
 
 
-class Abrigos(Base):
+class Abrigo(Base):
     __tablename__ = "abrigos"
 
     id = Column(Integer, primary_key=True, index=True)
     localidade = Column(String)
 
-    pet = relationship("Pets", back_populates="abrigo")
+    pet = relationship("Pet", back_populates="abrigo")
